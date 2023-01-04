@@ -14,7 +14,7 @@ class Frame:
         self.num_vertical_tiles = 30
         self.num_horizontal_tiles = 30
 
-        self.tile_margin = 1
+        self.tile_margin = 10
         self.tile_w = int((self.w - (self.num_horizontal_tiles * self.tile_margin)) / self.num_horizontal_tiles)
         self.tile_h = int((self.h - (self.num_vertical_tiles * self.tile_margin)) / self.num_vertical_tiles)
 
