@@ -5,7 +5,7 @@ class App:
     def __init__(self):
         width = int(1920/2)
         height = int(1080 /2)
-        pyxel.init(width, height,  title="色戦争げーむ")
+        pyxel.init(width, height,  title="色色々")
 
         frame_w =  frame_h = height
         frame_x = int((width - frame_w) / 2 )
@@ -16,17 +16,12 @@ class App:
     def run(self):
         pyxel.run(self.update, self.draw)
         
-
-
-    
     def update(self):
         self.frame.update()
-        pass
 
     def draw(self):
-        pyxel.cls(7)
+        # pyxel.cls(7)
         self.frame.draw()
-        # pyxel.text(55, 41, "Hello, World!", 7)
 
 if __name__ == '__main__':
     app = App()

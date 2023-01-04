@@ -23,10 +23,7 @@ class Frame:
     def init_tiles(self):
         for i in range(0, self.num_horizontal_tiles):
             for j in range(0, self.num_vertical_tiles):
-                rondom_num = random.randint(0, 1)
-                
                 tile_color = random.randint(0, 15)
-                
                 is_active = False
                 tile = Tile(self.x + (i * (self.tile_w + self.tile_margin)), self.y + (j * (self.tile_h + self.tile_margin)), self.tile_w, self.tile_h, tile_color, is_active)
                 self.tiles.append(tile)
@@ -38,12 +35,15 @@ class Frame:
             tile.draw()
     
     def update(self):
-        self.contagion(self.tile_margin)
-        for tile in self.tiles:
-            tile.update()
+        self.tiles_contagion(self.tile_margin)
+        self.tiles_update()
 
-    def contagion(self, tile_margin):
+    def tiles_contagion(self, tile_margin):
         for subject_tile in self.tiles:
             for object_tile in self.tiles:
                 if subject_tile != object_tile:
                     subject_tile.contagion(object_tile, tile_margin)
+
+    def tiles_update(self):
+        for tile in self.tiles:
+            tile.update()

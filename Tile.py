@@ -38,33 +38,28 @@ class Tile:
         if random_num == 0:
             self.is_active = not self.is_active
     
-    def contagion(self, tile, tile_margin):
+    def contagion(self, object_tile, tile_margin):
+
+        def change_onject_tile_state(object_tile):
+            object_tile.is_active = True
+            object_tile.c = self.c
+        
         if self.is_active and self.active_duration <= self.ACTIVE_DURATION / 2 and self.waiting_time <= 0:
-            if self.x == tile.x and self.y == tile.y:
+            if self.x == object_tile.x and self.y == object_tile.y:
                 pass
-            elif self.x == tile.x and self.y == tile.y + self.h + tile_margin:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x and self.y == tile.y - self.h - tile_margin:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x + self.w + 1 and self.y == tile.y:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x - self.w - 1 and self.y == tile.y:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x + self.w + 1 and self.y == tile.y + self.h + tile_margin:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x - self.w - 1 and self.y == tile.y - self.h - tile_margin:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x + self.w + 1 and self.y == tile.y - self.h - tile_margin:
-                tile.is_active = True
-                tile.c = self.c
-            elif self.x == tile.x - self.w - 1 and self.y == tile.y + self.h + tile_margin:
-                tile.is_active = True
-                tile.c = self.c
-
-
+            elif self.x == object_tile.x and self.y == object_tile.y + self.h + tile_margin:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x and self.y == object_tile.y - self.h - tile_margin:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x + self.w + tile_margin and self.y == object_tile.y:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x - self.w - tile_margin and self.y == object_tile.y:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x + self.w + tile_margin and self.y == object_tile.y + self.h + tile_margin:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x - self.w - tile_margin and self.y == object_tile.y - self.h - tile_margin:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x + self.w + tile_margin and self.y == object_tile.y - self.h - tile_margin:
+                change_onject_tile_state(object_tile)
+            elif self.x == object_tile.x - self.w - tile_margin and self.y == object_tile.y + self.h + tile_margin:
+                change_onject_tile_state(object_tile)
